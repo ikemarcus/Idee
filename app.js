@@ -49,7 +49,29 @@ const activiteiten = [
     "een openluchtmuseum bezoeken", "een lokale parade bezoeken",
     "wandelen langs de grachten", "een lokale vismarkt bezoeken",
     "een dagtocht naar de kust doen", "een proeverij van Belgische bieren doen",
-    "een culinaire tour doen", "munzies zoeken"
+    "een culinaire tour doen", "munzies zoeken", 
+    "een luchtballonvaart maken", "een kookcursus volgen", "een wijnproeverij doen",
+    "een speleologie avontuur", "een kabelbaanrit maken", "een bezoek aan een planetarium",
+    "een lokale bakkerij bezoeken", "een foodtruck festival bezoeken", 
+    "een escape room doen", "een bezoek aan een dierenasiel", "street food proeven",
+    "mee doen aan een stadsfotografie wedstrijd", "een bezoek aan een aquarium",
+    "proeven van lokale gebakjes", "een bezoek aan een lokale wijngaard", 
+    "een boottour door de grachten", "een wandeling door historische wijken",
+    "een bezoek aan een oude fabriek", "een bezoek aan een kunstfestival",
+    "proeven van ambachtelijk ijs", "een bezoek aan een pop-up markt",
+    "een stadsfiets huren", "een graffiti workshop volgen",
+    "een avondwandeling maken", "meedoen aan een stadsjacht", "een bezoek aan een science center",
+    "een bezoek aan een avonturenpark", "proeven van straatvoedsel",
+    "een rondleiding door een historisch theater", "een boek lezen in een stadspark",
+    "een gratis stadswandeling maken", "een openbare bibliotheek bezoeken", "straatmuzikanten beluisteren",
+    "een gratis kunsttentoonstelling bezoeken", "een bezoek aan een openbare tuin",
+    "een historische wijk verkennen", "mensen kijken op een plein", "een openbare lezing bijwonen",
+    "een openbare kunstinstallatie bekijken", "een gratis concert in het park bijwonen",
+    "de zonsondergang bekijken", "vogels spotten in een park", "een gratis stadsfestival bezoeken",
+    "een wandeling langs het water maken", "fietsen door de stad", "een openbare markt bezoeken",
+    "een wandeling maken over een brug", "een straatartiest bekijken", "een gratis sportevenement bijwonen",
+    "historische gebouwen fotograferen", "een gratis film in het park bekijken",
+    "een openbare speeltuin bezoeken", "een historische kerk bezoeken", "gratis proefmonsters proberen op een markt"
 ];
 
 function randomItem(array) {
