@@ -91,20 +91,20 @@ button:hover {
 }
 
 #randomNaam {
-    position: relative; /* Verander de positie naar absolute */
+    position: relative; 
     font-size: 1.5rem;
     font-weight: bold;
     color: #333;
-    padding: 10px 20px; /* Voeg wat padding toe voor een betere uitlijning */
-    background-color: #f0f0f0; /* Achtergrondkleur van de box */
-    border-radius: 5px; /* Afronding van de hoeken */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Schaduw toevoegen voor diepte */
-    opacity: 0; /* Zorg ervoor dat de naam direct zichtbaar is */
-    transition: opacity 0.5s ease; /* Voeg een overgang toe voor het infade-effect */
-    z-index: 2; /* Zet de z-index hoger dan die van #resultaat */
-    top: -60px; /* Verplaats het element om bovenaan de resultaatbox te plaatsen */
-    left: 50%; /* Centreer horizontaal */
-    transform: translateX(-50%); /* Centreer horizontaal */
+    padding: 10px 20px; 
+    background-color: #f0f0f0; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+    opacity: 0; 
+    transition: opacity 0.5s ease; 
+    z-index: 2; 
+    top: -60px; 
+    left: 50%; 
+    transform: translateX(-50%);
 }
 
 
