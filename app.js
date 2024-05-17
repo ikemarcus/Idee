@@ -57,14 +57,29 @@ function randomItem(array) {
     return array[randomIndex];
 }
 
+let fadeInInterval;
+
 function genereerStadEnActiviteit() {
+    // JavaScript-code om stad en activiteit te genereren...
+    // JavaScript-code om naam te genereren en weer te geven...
+    console.log("Functie genereerStadEnActiviteit wordt aangeroepen...");
+    
     // Verberg de knop en toon de laadbalk
     const knop = document.querySelector('button');
     knop.style.display = 'none';
     document.getElementById('loader').classList.remove('hidden');
 
+    // Verberg de namenGenerator box
+    const namenGenerator = document.getElementById('namenGenerator');
+    namenGenerator.style.display = 'none';
+
+    // Als er nog een fadeInInterval actief is, stop deze
+    if (fadeInInterval) clearInterval(fadeInInterval);
+
     // Simuleer het genereren van een stad en activiteit na 2 seconden
     setTimeout(function() {
+        console.log("Stad en activiteit aan het genereren...");
+
         // Simuleer het genereren van een stad en activiteit
         const randomStad = randomItem(steden);
         const randomActiviteit = randomItem(activiteiten);
@@ -110,12 +125,30 @@ function genereerStadEnActiviteit() {
                 knop.style.display = 'block';
             }, 500); // Toon na een korte vertraging
         }, 2000); // Laat de activiteit verschijnen na 2 seconden
+
+        // Voeg dit toe binnen de setTimeout-functie van genereerStadEnActiviteit, na het tonen van de activiteit
+        setTimeout(function() {
+            console.log("Naam aan het genereren...");
+            const randomNaam = Math.random() < 0.5 ? 'Tom' : 'Ike';
+            document.getElementById('randomNaam').textContent = randomNaam;
+            const namenGenerator = document.getElementById('namenGenerator');
+            namenGenerator.style.display = 'block';
+
+            // Laat de naam invliegen van boven
+            setTimeout(function() {
+                const randomNaamElement = document.getElementById('randomNaam');
+                randomNaamElement.style.top = '0'; // Beginpositie bovenaan
+                randomNaamElement.style.opacity = 1;
+            }, 100);
+        }, 2500);
+
     }, 2000); // Start na 2 seconden
 }
 
+
 function fadeIn(element, duration) {
     let opacity = 0;
-    const intervalTime = duration / 10; // Verdelen in 10 stappen voor een vloeiende overgang
+    const intervalTime = duration / 10;
     const fadeInInterval = setInterval(function() {
         if (opacity >= 1) {
             clearInterval(fadeInInterval);

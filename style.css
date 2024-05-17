@@ -8,7 +8,7 @@
 }
 
 .hidden {
-    display: none; /* Verberg de loader standaard */
+    display: none;
 }
 
 body {
@@ -22,11 +22,13 @@ body {
     margin: 0;
     color: #333;
 }
+
 h1 {
     color: #0288d1;
     font-size: 2.5rem;
     margin-bottom: 20px;
 }
+
 #resultaat {
     background-color: #fff;
     padding: 20px;
@@ -36,7 +38,10 @@ h1 {
     max-width: 600px;
     text-align: center;
     margin-bottom: 20px;
+    z-index: 1;
+    position: relative;
 }
+
 button {
     position: relative;
     background-color: #0288d1;
@@ -49,14 +54,17 @@ button {
     transition: background-color 0.3s ease;
     margin-bottom: 20px; 
 }
+
 button:hover {
     background-color: #0277bd;
 }
+
 .loader-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .loader {
     border: 4px solid rgba(70, 130, 180, 0.2); 
     border-top: 4px solid #3498db; 
@@ -66,10 +74,44 @@ button:hover {
     animation: spin 2s linear infinite;
     margin-left: 25px; 
 }
+
 .highlight {
     color: #0288d1;
     font-weight: bold;
 }
+
+#namenGenerator {
+    position: relative;
+    margin-bottom: -35px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+#randomNaam {
+    position: relative; /* Verander de positie naar absolute */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    padding: 10px 20px; /* Voeg wat padding toe voor een betere uitlijning */
+    background-color: #f0f0f0; /* Achtergrondkleur van de box */
+    border-radius: 5px; /* Afronding van de hoeken */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Schaduw toevoegen voor diepte */
+    opacity: 0; /* Zorg ervoor dat de naam direct zichtbaar is */
+    transition: opacity 0.5s ease; /* Voeg een overgang toe voor het infade-effect */
+    z-index: 2; /* Zet de z-index hoger dan die van #resultaat */
+    top: -60px; /* Verplaats het element om bovenaan de resultaatbox te plaatsen */
+    left: 50%; /* Centreer horizontaal */
+    transform: translateX(-50%); /* Centreer horizontaal */
+}
+
+
+.hidden {
+    display: none;
+}
+
 @media (max-width: 600px) {
     h1 {
         font-size: 2rem;
