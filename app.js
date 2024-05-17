@@ -59,6 +59,7 @@ function randomItem(array) {
 
 let fadeInInterval;
 
+
 function genereerStadEnActiviteit() {
     // JavaScript-code om stad en activiteit te genereren...
     // JavaScript-code om naam te genereren en weer te geven...
@@ -119,28 +120,30 @@ function genereerStadEnActiviteit() {
         setTimeout(function() {
             fadeIn(activiteitSpan, 500);
 
-            // Verberg de laadbalk en toon de knop na een korte vertraging
+            // Voeg dit toe binnen de setTimeout-functie van genereerStadEnActiviteit, na het tonen van de activiteit
             setTimeout(function() {
-                document.getElementById('loader').classList.add('hidden');
-                knop.style.display = 'block';
-            }, 500); // Toon na een korte vertraging
+                console.log("Naam aan het genereren...");
+                const randomNaam = Math.random() < 0.5 ? 'Tom' : 'Ike';
+                document.getElementById('randomNaam').textContent = randomNaam;
+                const namenGenerator = document.getElementById('namenGenerator');
+                namenGenerator.style.display = 'block';
+
+                // Laat de naam invliegen van boven
+                setTimeout(function() {
+                    const randomNaamElement = document.getElementById('randomNaam');
+                    randomNaamElement.style.top = '0'; // Beginpositie bovenaan
+                    randomNaamElement.style.opacity = 1;
+
+                    // Verberg de laadbalk en toon de knop na 0.5 seconden
+                    setTimeout(function() {
+                        document.getElementById('loader').classList.add('hidden');
+                        knop.style.display = 'block';
+                    }, 500); // Verberg de laadbalk 0.5 seconden nadat de naam verschenen is
+
+                }, 100);
+            }, 2000); // Start de naamgeneratie 0.5 seconden nadat de activiteit is verschenen
+
         }, 2000); // Laat de activiteit verschijnen na 2 seconden
-
-        // Voeg dit toe binnen de setTimeout-functie van genereerStadEnActiviteit, na het tonen van de activiteit
-        setTimeout(function() {
-            console.log("Naam aan het genereren...");
-            const randomNaam = Math.random() < 0.5 ? 'Tom' : 'Ike';
-            document.getElementById('randomNaam').textContent = randomNaam;
-            const namenGenerator = document.getElementById('namenGenerator');
-            namenGenerator.style.display = 'block';
-
-            // Laat de naam invliegen van boven
-            setTimeout(function() {
-                const randomNaamElement = document.getElementById('randomNaam');
-                randomNaamElement.style.top = '0'; // Beginpositie bovenaan
-                randomNaamElement.style.opacity = 1;
-            }, 100);
-        }, 2500);
 
     }, 2000); // Start na 2 seconden
 }
