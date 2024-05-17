@@ -27,6 +27,7 @@ h1 {
     color: #0288d1;
     font-size: 2.5rem;
     margin-bottom: 20px;
+    z-index: 3;
 }
 
 #resultaat {
