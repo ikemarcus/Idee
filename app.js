@@ -49,7 +49,7 @@ const activiteiten = [
     "een openluchtmuseum bezoeken", "een lokale parade bezoeken",
     "wandelen langs de grachten", "een lokale vismarkt bezoeken",
     "een dagtocht naar de kust doen", "een proeverij van Belgische bieren doen",
-    "een culinaire tour doen"
+    "een culinaire tour doen", "munzies zoeken"
 ];
 
 function randomItem(array) {
