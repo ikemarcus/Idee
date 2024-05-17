@@ -63,7 +63,7 @@ function genereerStadEnActiviteit() {
     knop.style.display = 'none';
     document.getElementById('loader').classList.remove('hidden');
 
-    // Simuleer het genereren van een stad en activiteit na 4 seconden
+    // Simuleer het genereren van een stad en activiteit na 2 seconden
     setTimeout(function() {
         // Simuleer het genereren van een stad en activiteit
         const randomStad = randomItem(steden);
@@ -85,16 +85,22 @@ function genereerStadEnActiviteit() {
                 if (index === letters.length - 1) {
                     document.getElementById('loader').classList.add('hidden');
                     knop.style.display = 'block'; // Terugknop weergeven
+
+                    // Voeg de HTML-tags toe aan het resultaat
                     const highlights = resultaatElement.querySelectorAll('.highlight');
-                    highlights.forEach(highlight => {
-                        highlight.style.color = '#0288d1'; // Pas de stijl toe op de highlight-elementen
-                        highlight.style.fontWeight = 'bold';
+                    highlights.forEach((highlight, highlightIndex) => {
+                        // Voeg een vertraging toe aan het begin en einde van de highlighted tekst
+                        setTimeout(() => {
+                            highlight.style.color = '#0288d1'; // Pas de stijl toe op de highlight-elementen
+                            highlight.style.fontWeight = 'bold';
+                        }, (highlightIndex === 0 || highlightIndex === highlights.length - 1) ? 500 : 0);
                     });
                 }
-            }, index * 100); // Voeg een vertraging toe om de animatie te creëren
+            }, index * 50); // Voeg een vertraging toe om de animatie te creëren
         });
     }, 2000); // 2000 milliseconden = 2 seconden
 }
+
 
 
 
