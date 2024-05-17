@@ -68,40 +68,60 @@ function genereerStadEnActiviteit() {
         // Simuleer het genereren van een stad en activiteit
         const randomStad = randomItem(steden);
         const randomActiviteit = randomItem(activiteiten);
-        const resultaat = `Bezoek <span class="highlight">${randomStad}</span> en ga <span class="highlight">${randomActiviteit}</span>.`;
 
+        // Voeg de stad en activiteit toe aan het resultaatElement
         const resultaatElement = document.getElementById('resultaat');
         resultaatElement.innerHTML = ""; // Maak het resultaat leeg
 
-        // Animatie om resultaat letter voor letter te onthullen
-        let resultaatTekst = ""; // Tijdelijke variabele om de tekst op te bouwen
-        const letters = resultaat.split(""); // Verdeel de resultaattekst in letters
-        letters.forEach((letter, index) => {
-            setTimeout(() => {
-                resultaatTekst += letter; // Voeg de huidige letter toe aan de tijdelijke variabele
-                resultaatElement.innerHTML = resultaatTekst; // Update de HTML van het resultaatElement
+        // Voeg het woord "Bezoek" toe aan het resultaatElement
+        const bezoekSpan = document.createElement('span');
+        bezoekSpan.textContent = "Bezoek ";
+        resultaatElement.appendChild(bezoekSpan);
 
-                // Als alle letters zijn onthuld, verberg de laadbalk en pas de stijl toe op het resultaat
-                if (index === letters.length - 1) {
-                    document.getElementById('loader').classList.add('hidden');
-                    knop.style.display = 'block'; // Terugknop weergeven
+        // Voeg de stad toe aan het resultaatElement met highlight
+        const stadSpan = document.createElement('span');
+        stadSpan.classList.add('highlight');
+        stadSpan.textContent = randomStad;
+        stadSpan.style.opacity = 0; // Verberg de stad
+        resultaatElement.appendChild(stadSpan);
 
-                    // Voeg de HTML-tags toe aan het resultaat
-                    const highlights = resultaatElement.querySelectorAll('.highlight');
-                    highlights.forEach((highlight, highlightIndex) => {
-                        // Voeg een vertraging toe aan het begin en einde van de highlighted tekst
-                        setTimeout(() => {
-                            highlight.style.color = '#0288d1'; // Pas de stijl toe op de highlight-elementen
-                            highlight.style.fontWeight = 'bold';
-                        }, (highlightIndex === 0 || highlightIndex === highlights.length - 1) ? 500 : 0);
-                    });
-                }
-            }, index * 50); // Voeg een vertraging toe om de animatie te creëren
-        });
-    }, 2000); // 2000 milliseconden = 2 seconden
+        // Voeg "en ga" toe aan het resultaatElement
+        const enGaSpan = document.createElement('span');
+        enGaSpan.textContent = " en ga ";
+        resultaatElement.appendChild(enGaSpan);
+
+        // Voeg de activiteit toe aan het resultaatElement na "en ga" met highlight
+        const activiteitSpan = document.createElement('span');
+        activiteitSpan.classList.add('highlight');
+        activiteitSpan.textContent = randomActiviteit;
+        activiteitSpan.style.opacity = 0; // Verberg de activiteit
+        resultaatElement.appendChild(activiteitSpan);
+
+        // Fade-in van de stad gedurende 1 seconde
+        fadeIn(stadSpan, 500);
+
+        // Toon de activiteit na 2 seconden voor 1 seconde
+        setTimeout(function() {
+            fadeIn(activiteitSpan, 500);
+
+            // Verberg de laadbalk en toon de knop na een korte vertraging
+            setTimeout(function() {
+                document.getElementById('loader').classList.add('hidden');
+                knop.style.display = 'block';
+            }, 500); // Toon na een korte vertraging
+        }, 2000); // Laat de activiteit verschijnen na 2 seconden
+    }, 2000); // Start na 2 seconden
 }
 
-
-
-
-
+function fadeIn(element, duration) {
+    let opacity = 0;
+    const intervalTime = duration / 10; // Verdelen in 10 stappen voor een vloeiende overgang
+    const fadeInInterval = setInterval(function() {
+        if (opacity >= 1) {
+            clearInterval(fadeInInterval);
+        } else {
+            opacity += 0.1;
+            element.style.opacity = opacity;
+        }
+    }, intervalTime);
+}
