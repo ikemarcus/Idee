@@ -58,8 +58,44 @@ function randomItem(array) {
 }
 
 function genereerStadEnActiviteit() {
-    const randomStad = randomItem(steden);
-    const randomActiviteit = randomItem(activiteiten);
-    const resultaat = `Bezoek <span class="highlight">${randomStad}</span> en ga <span class="highlight">${randomActiviteit}</span>.`;
-    document.getElementById('resultaat').innerHTML = resultaat;
+    // Verberg de knop en toon de laadbalk
+    const knop = document.querySelector('button');
+    knop.style.display = 'none';
+    document.getElementById('loader').classList.remove('hidden');
+
+    // Simuleer het genereren van een stad en activiteit na 4 seconden
+    setTimeout(function() {
+        // Simuleer het genereren van een stad en activiteit
+        const randomStad = randomItem(steden);
+        const randomActiviteit = randomItem(activiteiten);
+        const resultaat = `Bezoek <span class="highlight">${randomStad}</span> en ga <span class="highlight">${randomActiviteit}</span>.`;
+
+        const resultaatElement = document.getElementById('resultaat');
+        resultaatElement.innerHTML = ""; // Maak het resultaat leeg
+
+        // Animatie om resultaat letter voor letter te onthullen
+        let resultaatTekst = ""; // Tijdelijke variabele om de tekst op te bouwen
+        const letters = resultaat.split(""); // Verdeel de resultaattekst in letters
+        letters.forEach((letter, index) => {
+            setTimeout(() => {
+                resultaatTekst += letter; // Voeg de huidige letter toe aan de tijdelijke variabele
+                resultaatElement.innerHTML = resultaatTekst; // Update de HTML van het resultaatElement
+
+                // Als alle letters zijn onthuld, verberg de laadbalk en pas de stijl toe op het resultaat
+                if (index === letters.length - 1) {
+                    document.getElementById('loader').classList.add('hidden');
+                    knop.style.display = 'block'; // Terugknop weergeven
+                    const highlights = resultaatElement.querySelectorAll('.highlight');
+                    highlights.forEach(highlight => {
+                        highlight.style.color = '#0288d1'; // Pas de stijl toe op de highlight-elementen
+                        highlight.style.fontWeight = 'bold';
+                    });
+                }
+            }, index * 100); // Voeg een vertraging toe om de animatie te creëren
+        });
+    }, 2000); // 2000 milliseconden = 2 seconden
 }
+
+
+
+
