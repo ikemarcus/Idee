@@ -113,6 +113,47 @@ button:hover {
     display: none;
 }
 
+.selectBox {
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 2px solid #0288d1;
+    background-color: #fff;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    appearance: none; /* Verwijder standaard dropdown pijl */
+    -webkit-appearance: none; /* Voor oudere versies van WebKit browsers */
+    -moz-appearance: none; /* Voor Firefox */
+    position: relative; /* Zorg ervoor dat de opties positie relatief aan de selectiebox zijn */
+}
+
+.selectBox:focus {
+    outline: none;
+    border-color: #0277bd;
+    box-shadow: 0 0 0 2px rgba(2, 136, 209, 0.2);
+}
+
+/* Stijl voor de keuzemenuopties */
+.selectBox option {
+    padding: 8px 16px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Stijl voor de keuzemenuopties bij hover */
+.selectBox option:hover {
+    background-color: #f0f0f0;
+}
+
+/* Stijl voor de keuzemenuopties bij focus */
+.selectBox option:focus {
+    outline: none;
+    background-color: #f0f0f0;
+}
+
 @media (max-width: 600px) {
     h1 {
         font-size: 2rem;
