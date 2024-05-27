@@ -152,11 +152,16 @@ button:hover {
     background-color: #f0f0f0;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     h1 {
         font-size: 2rem;
         text-align: center;
     }
+
+    * {
+        padding: 15px;
+    }
+
     #resultaat {
         font-size: 1rem;
         padding: 15px;
