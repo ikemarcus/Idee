@@ -74,6 +74,36 @@ const activiteiten = [
     "een openbare speeltuin bezoeken", "een historische kerk bezoeken", "gratis proefmonsters proberen op een markt"
 ];
 
+const avondActiviteiten = [
+    "naar de bioscoop gaan", "dineren in een sfeervol restaurant", "een avondwandeling maken",
+    "een cocktailbar bezoeken", "naar een comedyshow gaan", "sterren kijken",
+    "een nachttour doen", "een avondrondvaart maken", "bowlen",
+    "een concert bijwonen", "een theaterstuk zien", "een avondmarkt bezoeken",
+    "een nachtelijke fotoshoot doen", "een spooktocht maken", "een kroegentocht doen",
+    "karaoke zingen", "een nachtelijke stadswandeling maken", "een dansfeest bijwonen",
+    "een nachtelijke fietstocht maken", "een nachtelijke fotoworkshop doen",
+    "een nachtelijk foodfestival bezoeken", "een nachtelijke vuurwerkshow bekijken"
+];
+
+const thuisActiviteiten = [
+    "een filmavond houden", "een bordspel spelen", "een kookwedstrijd houden",
+    "een thuis-spa-dag houden", "een boekenclub houden", "een DIY-project doen",
+    "een videogame-marathon houden", "een puzzel maken", "een themafeestje houden",
+    "een karaoke-avond houden", "een cocktailavond houden", "een knutselproject doen",
+    "een bakdag houden", "een online cursus volgen", "een schilderworkshop doen",
+    "een tuinfeestje houden", "een home theateravond houden", "een fotoboek maken",
+    "een meditatie- en yoga-sessie houden", "een muziekavond houden", "een scrapbooking sessie houden",
+    "een kaartspelavond houden", "een huis opruimen en herinrichten", "een terrarium maken",
+    "een cocktailworkshop thuis houden", "een stargazing-avond houden", "een DIY-spa-dag houden",
+    "een online schildercursus volgen", "een indoor picknick houden", "een creatieve schrijfsessie houden",
+    "een bordspeltoernooi organiseren", "een thematische kookavond organiseren",
+    "een avondje schilderen", "een knutselmarathon houden", "een filmfestival thuis organiseren",
+    "een boekenruilavond houden", "een avondje cocktails shaken", "een podcast luisteravond houden",
+    "een DIY-cadeau maken", "een indoor sporttoernooi organiseren", "een avondje mozaïeken",
+    "een thuisconcert houden", "een bordspel-ontwerpavond organiseren", "een avondje kalligraferen"
+];
+
+
 function randomItem(array) {
     const randomIndex = Math.floor(Math.random() * array.length);
     return array[randomIndex];
@@ -102,7 +132,21 @@ function genereerStadEnActiviteit() {
 
         // Simuleer het genereren van een stad en activiteit
         const randomStad = randomItem(steden);
-        const randomActiviteit = randomItem(activiteiten);
+        const activiteitType = document.getElementById('activiteitType').value;
+        let randomActiviteit;
+        switch(activiteitType) {
+            case 'regulier':
+                randomActiviteit = randomItem(activiteiten);
+                break;
+            case 'avond':
+                randomActiviteit = randomItem(avondActiviteiten);
+                break;
+            case 'thuis':
+                randomActiviteit = randomItem(thuisActiviteiten);
+                break;
+            default:
+                randomActiviteit = randomItem(activiteiten);
+        }
 
         // Voeg de stad en activiteit toe aan het resultaatElement
         const resultaatElement = document.getElementById('resultaat');
@@ -171,6 +215,7 @@ function genereerStadEnActiviteit() {
 
     }, 2000); // Start na 2 seconden
 }
+
 
 
 function fadeIn(element, duration) {
